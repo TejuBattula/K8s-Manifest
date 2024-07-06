@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deplyment
+  labels:
+    type: DB
+    author: Tejeswari
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: DB
+  template:
+    metadata:
+      name: mypostgres
+      labels:
+        type: DB
+    spec:
+      containers:
+        - name: mypostgres
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: POSTGRES_USER
+              value: myuser
+            - name: POSTGRES_DB
+              value: mydb
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+...
