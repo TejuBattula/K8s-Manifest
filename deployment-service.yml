@@ -11,6 +11,5 @@ spec:
     - targetPort: 3306
       port: 3306
   selector:
-    type: db
-    author: Tejeswari
+    type: proxy
 ...
